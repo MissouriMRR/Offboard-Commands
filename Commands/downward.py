@@ -2,7 +2,7 @@ import asyncio
 from mavsdk import System
 
 
-async def forward(drone: System, distance: int) -> None:
+async def forward(drone: System, distance: float) -> None:
     """
     Moves downward a set distance by calculating move time using a velocity of 20
 
@@ -10,7 +10,7 @@ async def forward(drone: System, distance: int) -> None:
     ----------
     drone : System
         MavSDK object for drone control
-    distance: int
+    distance: float
         distance in meters wanted to go forward
     """
     move_time = distance / 20
