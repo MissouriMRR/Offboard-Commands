@@ -1,6 +1,5 @@
 import asyncio
 from mavsdk import System
-import time
 
 
 async def forward(drone: System, distance: int) -> None:
@@ -18,7 +17,7 @@ async def forward(drone: System, distance: int) -> None:
 
     await drone.offboard.set_velocity_body(0, 0, -20, 0)
 
-    time.sleep(move_time)
+    await asyncio.sleep(move_time)
 
     await drone.offboard.set_velocity_body(0, 0, 0, 0)
     return
