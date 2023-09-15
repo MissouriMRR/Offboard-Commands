@@ -15,7 +15,7 @@ async def rotate(drone: System, degrees: float) -> None:
         degrees wanting to change in accordance in direction facing
     """
 
-    yaw = drone.offboard.PositionNedYaw.yaw_deg
+    yaw:float = drone.offboard.PositionNedYaw.yaw_deg
 
     await asyncio.sleep(move_time)
 

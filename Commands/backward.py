@@ -13,7 +13,7 @@ async def backward(drone: System, distance: float) -> None:
     distance: float
         distance in meters wanted to go forward
     """
-    move_time = distance / 20
+    move_time:float = distance / 20
 
     await drone.offboard.set_velocity_body(mavsdk.offboard.VelocityBodyYawSpeed(-20, 0, 0, 0))
 

@@ -18,13 +18,13 @@ async def directional_movement(drone: System, rightDistance: float, forwardDista
     Updistance: float
         distance in meters wanted to go forward
     """
-    distance = math.sqrt((rightDistance ** 2) + (forwardDistance **2)+ (upDistance ** 2))
+    distance:float = math.sqrt((rightDistance ** 2) + (forwardDistance **2)+ (upDistance ** 2))
 
-    rightVelocity = rightDistance/distance * 20
-    forwardVelocity = forwardDistance/distance * 20
-    upVelocity = upDistance/distance * 20
+    rightVelocity:float = rightDistance/distance * 20
+    forwardVelocity:float = forwardDistance/distance * 20
+    upVelocity:float = upDistance/distance * 20
 
-    move_time = distance / 20
+    move_time:float = distance / 20
 
     await drone.offboard.set_velocity_body(mavsdk.offboard.VelocityBodyYawSpeed(rightVelocity, forwardVelocity, upVelocity, 0))
 
