@@ -26,9 +26,9 @@ async def directional_movement(drone: System, rightDistance: float, forwardDista
 
     move_time = distance / 20
 
-    await drone.offboard.set_velocity_body(rightVelocity, forwardVelocity, upVelocity, 0)
+    await drone.offboard.set_velocity_body(mavsdk.offboard.VelocityBodyYawSpeed(rightVelocity, forwardVelocity, upVelocity, 0))
 
     await asyncio.sleep(move_time)
 
-    await drone.offboard.set_velocity_body(0, 0, 0, 0)
+    await drone.offboard.set_velocity_body(mavsdk.offboard.VelocityBodyYawSpeed(0, 0, 0, 0))
     return
