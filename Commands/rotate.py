@@ -1,6 +1,7 @@
 import asyncio
 import mavsdk
 from mavsdk import System
+from mavsdk import offboard
 
 
 async def rotate(drone: System, degrees: float) -> None:
@@ -15,9 +16,7 @@ async def rotate(drone: System, degrees: float) -> None:
         degrees wanting to change in accordance in direction facing
     """
 
-    yaw:float = drone.offboard.PositionNedYaw.yaw_deg
+    yaw: float = drone.offboard.PositionNedYaw.yaw_deg
 
-    await asyncio.sleep(move_time)
-
-    await drone.offboard.set_postion_ned(mavsdk.offboard.PostionNedYaw(0,0,0,yaw+degrees))
+    await drone.offboard.set_postion_ned(offboard.PositionNedYaw(0, 0, 0, yaw + degrees))
     return

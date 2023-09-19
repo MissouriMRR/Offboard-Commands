@@ -1,5 +1,6 @@
 import asyncio
 from mavsdk import System
+from mavsdk import offboard
 
 
 async def backward(drone: System, distance: float) -> None:
@@ -11,13 +12,13 @@ async def backward(drone: System, distance: float) -> None:
     drone : System
         MavSDK object for drone control
     distance: float
-        distance in meters wanted to go forward
+        distance in meters wanted to go backward
     """
-    move_time:float = distance / 20
+    move_time: float = distance / 20
 
-    await drone.offboard.set_velocity_body(mavsdk.offboard.VelocityBodyYawSpeed(-20, 0, 0, 0))
+    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(-20, 0, 0, 0))
 
     await asyncio.sleep(move_time)
 
-    await drone.offboard.set_velocity_body(mavsdk.offboard.VelocityBodyYawSpeed(0, 0, 0, 0))
+    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, 0, 0))
     return
