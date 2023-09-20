@@ -1,5 +1,6 @@
-import asyncio
-import mavsdk
+"""
+file containing function to rotate drone in degrees
+"""
 from mavsdk import System
 from mavsdk import offboard
 

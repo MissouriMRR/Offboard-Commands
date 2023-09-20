@@ -1,6 +1,10 @@
+"""
+file that contains funciton to move in a diagnol based on distance wanted to move in each direction
+"""
 import asyncio
-from mavsdk import System
 import math
+from mavsdk import System
+
 from mavsdk import offboard
 
 
