@@ -23,6 +23,8 @@ async def downward(drone: System, distance: float) -> None:
 
     await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, -ms_speed, 0))
 
+    await drone.offboard.start()
+
     await asyncio.sleep(move_time)
 
     await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, 0, 0))
