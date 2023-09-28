@@ -14,9 +14,13 @@ async def forward(drone: System, distance: float) -> None:
     distance: float
         distance in meters wanted to go forward
     """
+
+    ms_speed: float = 20
     move_time: float = distance / 20
 
-    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawSpeed(20, 0, 0, 0))
+    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawSpeed(ms_speed, 0, 0, 0))
+
+    await drone.offboard.start()
 
     await asyncio.sleep(move_time)
 

@@ -17,9 +17,13 @@ async def upward(drone: System, distance: float) -> None:
     distance: float
         distance in meters wanted to go upward
     """
-    move_time: float = distance / 20
 
-    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, 20, 0))
+    ms_speed:float = 20
+    move_time: float = distance / ms_speed
+
+    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, ms_speed, 0))
+
+    await drone.offboard.start()
 
     await asyncio.sleep(move_time)
 

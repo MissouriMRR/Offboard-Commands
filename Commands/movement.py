@@ -26,17 +26,21 @@ async def directional_movement(
     updistance: float
         distance in meters wanted to go up
     """
+
+    ms_speed:float = 20
     distance: float = math.sqrt((rightdistance**2) + (forwarddistance**2) + (updistance**2))
 
-    rightvelocity: float = rightdistance / distance * 20
-    forwardvelocity: float = forwarddistance / distance * 20
-    upvelocity: float = updistance / distance * 20
+    rightvelocity: float = rightdistance / distance * ms_speed
+    forwardvelocity: float = forwarddistance / distance * ms_speed
+    upvelocity: float = updistance / distance * ms_speed
 
-    move_time: float = distance / 20
+    move_time: float = distance / ms_speed
 
     await drone.offboard.set_velocity_body(
         offboard.VelocityBodyYawspeed(rightvelocity, forwardvelocity, upvelocity, 0)
     )
+
+    await drone.offboard.start()
 
     await asyncio.sleep(move_time)
 
