@@ -28,9 +28,7 @@ async def directional_movement(
     """
 
     ms_speed: float = 20
-    distance: float = math.sqrt(
-        (rightdistance**2) + (forwarddistance**2) + (updistance**2)
-    )
+    distance: float = math.sqrt((rightdistance**2) + (forwarddistance**2) + (updistance**2))
 
     rightvelocity: float = rightdistance / distance * ms_speed
     forwardvelocity: float = forwarddistance / distance * ms_speed
