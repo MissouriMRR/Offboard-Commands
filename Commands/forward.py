@@ -18,11 +18,11 @@ async def forward(drone: System, distance: float) -> None:
     ms_speed: float = 20
     move_time: float = distance / 20
 
-    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawSpeed(ms_speed, 0, 0, 0))
+    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(ms_speed, 0, 0, 0))
 
     await drone.offboard.start()
 
     await asyncio.sleep(move_time)
 
-    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawSpeed(0, 0, 0, 0))
+    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, 0, 0))
     return

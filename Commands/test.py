@@ -9,6 +9,13 @@ from mavsdk import offboard
 import mavsdk
 
 from backward import backward
+from forward import forward
+from left import left
+from right import right
+from rotate import rotate
+from upward import upward
+from downward import downward
+from movement import directional_movement
 
 SIM_ADDR: str = "udp://:14540"
 CON_ADDR: str = "serial:///dev/ttyUSB0:921600"
@@ -51,8 +58,40 @@ async def run() -> None:
     await asyncio.sleep(60)
 
     print("I am here trying to set velocity")
+    """
+    await backward(drone, 100)
 
-    await backward(drone, 200)
+    await asyncio.sleep(30)
+
+    await forward(drone, 100)
+
+    await asyncio.sleep(30)
+
+    await left(drone, 100)
+
+    await asyncio.sleep(30)
+
+    await right(drone, 100)
+
+    await asyncio.sleep(30)
+
+    await upward(drone, 100)
+
+    await asyncio.sleep(30)
+
+    await downward(drone, 100)
+
+    await asyncio.sleep(30)
+
+    await rotate(drone, 90)
+
+    await asyncio.sleep(30)
+
+    await forward(drone, 100)
+
+    await asyncio.sleep(30)
+    """
+    await directional_movement(drone, 100, 100, 100)
 
     await asyncio.sleep(30)
 
