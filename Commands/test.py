@@ -22,10 +22,7 @@ CON_ADDR: str = "serial:///dev/ttyUSB0:921600"
 
 
 async def run() -> None:
-    """
-
-    """
-
+    """ """
 
     # create a drone object
     drone: System = System()

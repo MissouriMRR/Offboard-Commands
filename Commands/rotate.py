@@ -18,7 +18,9 @@ async def rotate(drone: System, degrees: float) -> None:
     """
 
     async for tel in drone.telemetry.attitude_euler():
-        yaw:float = tel.yaw_deg
+        yaw: float = tel.yaw_deg
 
-        await drone.offboard.set_position_ned(offboard.PositionNedYaw(0, 0, 0, yaw + degrees))
+        await drone.offboard.set_position_ned(
+            offboard.PositionNedYaw(0, 0, 0, yaw + degrees)
+        )
         return

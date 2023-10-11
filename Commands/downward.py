@@ -18,10 +18,12 @@ async def downward(drone: System, distance: float) -> None:
         distance in meters wanted to go downward
     """
 
-    ms_speed:float = 20
+    ms_speed: float = 20
     move_time: float = distance / ms_speed
 
-    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, 0, -ms_speed, 0))
+    await drone.offboard.set_velocity_body(
+        offboard.VelocityBodyYawspeed(0, 0, -ms_speed, 0)
+    )
 
     await drone.offboard.start()
 

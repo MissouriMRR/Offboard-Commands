@@ -18,10 +18,12 @@ async def left(drone: System, distance: float) -> None:
         distance in meters wanted to go left
     """
 
-    ms_speed:float = 20
+    ms_speed: float = 20
     move_time: float = distance / 20
 
-    await drone.offboard.set_velocity_body(offboard.VelocityBodyYawspeed(0, -ms_speed, 0, 0))
+    await drone.offboard.set_velocity_body(
+        offboard.VelocityBodyYawspeed(0, -ms_speed, 0, 0)
+    )
 
     await drone.offboard.start()
 
