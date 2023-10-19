@@ -1,3 +1,7 @@
+"""
+File containing function to move drone forwards a certain distance
+"""
+
 import asyncio
 from mavsdk import System
 from mavsdk import offboard
@@ -16,7 +20,7 @@ async def forward(drone: System, distance: float) -> None:
     """
 
     ms_speed: float = 20
-    move_time: float = distance / 20
+    move_time: float = distance / ms_speed
 
     await drone.offboard.set_velocity_body(
         offboard.VelocityBodyYawspeed(ms_speed, 0, 0, 0)

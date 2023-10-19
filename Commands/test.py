@@ -1,36 +1,43 @@
+"""
+test file for some of the movement commands
+"""
+
 import asyncio
 import logging
 import sys
 
-from typing import List
-
 from mavsdk import System
-from mavsdk import offboard
-import mavsdk
 
 from backward import backward
 from forward import forward
-from left import left
-from right import right
-from rotate import rotate
-from upward import upward
-from downward import downward
+
+# from left import left
+# from right import right
+# from rotate import rotate
+# from upward import upward
+# from downward import downward
 from movement import directional_movement
 
 SIM_ADDR: str = "udp://:14540"
 CON_ADDR: str = "serial:///dev/ttyUSB0:921600"
 
+TAKEOFF_ALT: int = 12
+MAX_SPEED: int = 25
+
 
 async def run() -> None:
-    """ """
+    """
+    tests different movement commands
+    """
 
     # create a drone object
     drone: System = System()
     await drone.connect(system_address=SIM_ADDR)
 
     # initilize drone configurations
-    await drone.action.set_takeoff_altitude(12)
-    await drone.action.set_maximum_speed(25)
+
+    await drone.action.set_takeoff_altitude(TAKEOFF_ALT)
+    await drone.action.set_maximum_speed(MAX_SPEED)
 
     # connect to the drone
     logging.info("Waiting for drone to connect...")
@@ -55,39 +62,7 @@ async def run() -> None:
     await asyncio.sleep(60)
 
     print("I am here trying to set velocity")
-    """
-    await backward(drone, 100)
 
-    await asyncio.sleep(30)
-
-    await forward(drone, 100)
-
-    await asyncio.sleep(30)
-
-    await left(drone, 100)
-
-    await asyncio.sleep(30)
-
-    await right(drone, 100)
-
-    await asyncio.sleep(30)
-
-    await upward(drone, 100)
-
-    await asyncio.sleep(30)
-
-    await downward(drone, 100)
-
-    await asyncio.sleep(30)
-
-    await rotate(drone, 90)
-
-    await asyncio.sleep(30)
-
-    await forward(drone, 100)
-
-    await asyncio.sleep(30)
-    """
     await directional_movement(drone, 100, 100, 100)
 
     await asyncio.sleep(30)

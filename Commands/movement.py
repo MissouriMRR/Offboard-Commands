@@ -9,7 +9,7 @@ from mavsdk import offboard
 
 
 async def directional_movement(
-    drone: System, rightdistance: float, forwarddistance: float, updistance: float
+    drone: System, right_distance: float, forward_distance: float, up_distance: float
 ) -> None:
     """
     Moves to a set position to the drone by calculating move time using a velocity of 20
@@ -19,27 +19,27 @@ async def directional_movement(
     ----------
     drone : System
         MavSDK object for drone control
-    rightdistance: float
+    right_distance: float
         distance in meters wanted to go right
-    forwarddistance: float
+    forward_distance: float
         distance in meters wanted to go forward
-    updistance: float
+    up_distance: float
         distance in meters wanted to go up
     """
 
     ms_speed: float = 20
     distance: float = math.sqrt(
-        (rightdistance**2) + (forwarddistance**2) + (updistance**2)
+        (right_distance**2) + (forward_distance**2) + (up_distance**2)
     )
 
-    rightvelocity: float = rightdistance / distance * ms_speed
-    forwardvelocity: float = forwarddistance / distance * ms_speed
-    upvelocity: float = updistance / distance * ms_speed
+    right_velocity: float = right_distance / distance * ms_speed
+    forward_velocity: float = forward_distance / distance * ms_speed
+    up_velocity: float = up_distance / distance * ms_speed
 
     move_time: float = distance / ms_speed
 
     await drone.offboard.set_velocity_body(
-        offboard.VelocityBodyYawspeed(rightvelocity, forwardvelocity, upvelocity, 0)
+        offboard.VelocityBodyYawspeed(right_velocity, forward_velocity, up_velocity, 0)
     )
 
     await drone.offboard.start()
