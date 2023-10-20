@@ -29,7 +29,7 @@ async def run() -> None:
     drone: System = System()
     await drone.connect(system_address=SIM_ADDR)
 
-    # initilize drone configurations
+    # initialize drone configurations
     await drone.action.set_takeoff_altitude(TAKEOFF_ALT)
     await drone.action.set_maximum_speed(MAX_SPEED)
 
