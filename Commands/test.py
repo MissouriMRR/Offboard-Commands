@@ -11,11 +11,6 @@ from mavsdk import System
 from backward import backward
 from forward import forward
 
-# from left import left
-# from right import right
-# from rotate import rotate
-# from upward import upward
-# from downward import downward
 from movement import directional_movement
 
 SIM_ADDR: str = "udp://:14540"
@@ -35,7 +30,6 @@ async def run() -> None:
     await drone.connect(system_address=SIM_ADDR)
 
     # initilize drone configurations
-
     await drone.action.set_takeoff_altitude(TAKEOFF_ALT)
     await drone.action.set_maximum_speed(MAX_SPEED)
 
