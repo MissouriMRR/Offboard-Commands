@@ -1,6 +1,7 @@
 """
 file that contains funciton to move in a diagnol based on distance wanted to move in each direction
 """
+
 import asyncio
 import math
 from mavsdk import System
@@ -28,9 +29,7 @@ async def directional_movement(
     """
 
     ms_speed: float = 20
-    distance: float = math.sqrt(
-        (right_distance**2) + (forward_distance**2) + (up_distance**2)
-    )
+    distance: float = math.sqrt((right_distance**2) + (forward_distance**2) + (up_distance**2))
 
     right_velocity: float = right_distance / distance * ms_speed
     forward_velocity: float = forward_distance / distance * ms_speed
